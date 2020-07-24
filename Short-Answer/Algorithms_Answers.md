@@ -13,19 +13,19 @@ b) Outer loop has a runtime of *O(n)*. Inner loop has a runtime of *O(n/2)*.
 c) `bunnyEars` is called exactly `n` times. So **O(n)**
 
 ## Exercise II
-This problem is essentially a fancier binary search.
-Just like binary search
+- This problem is essentially a fancier binary search.
+- Just like binary search, the complexity will be **O(log n)**
+```
+function check_breakage(starting floor, ending floor):
+  starting floor is 0 if not specified
+  ending floor is n if not specified
 
-  function check_breakage(starting floor, ending floor):
-    starting floor is `0` if not specified
-    ending floor is `n` if not specified
-
-    if `start` and `end` are the same floor:
-      if the egg breaks `check_breakage` for the floor below
-      if the egg doesn't break we've found the highest floor
-    otherwise:
-      test the floor midway between `start` and `end`
-      if the egg breaks:
-        `check_breakage` for the range `start` -> midpoint
-      if the egg doesn't break:
-        `check_breakage` for the range midpoint -> `end`
+  if start and end are the same floor:
+    if the egg breaks check_breakage for the floor below
+    if the egg doesn't break we've found the highest floor
+  otherwise:
+    test the floor midway between start and end
+    if the egg breaks:
+      check_breakage for the range start -> midpoint
+    if the egg doesn't break:
+      check_breakage for the range midpoint -> end
