@@ -96,33 +96,45 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Bubble Sort:
+        # Originally bubble sort
+        # Not sure what the stretch algorithm is tbh
+
+        # Initialize sorting
         self.set_light_on()
         self.swap_item()
+
+        # Continue looping until the light indicates the list is in order
         while self.light_is_on():
             self.set_light_off()
+
+            # Rightward loop
             while self.can_move_right():
                 self.move_right()
+                # We expect that items are ascending
+                # If so, drop current item and grab the next one
                 if self.compare_item() <= 0:
                     self.swap_item()
+                # If items aren't ascending, the list isn't in order yet
                 else:
                     self.set_light_on()
-                # self.move_left()
-                # self.swap_item()
-                # self.move_right()
             
+            #Drop off the largest item
             self.swap_item()
+
+            #Leftward loop
             while self.can_move_left():
                 self.move_left()
+                # If we made it back to the 'None' in position zero
+                # and the list was sorted, drop off the last item
                 if not self.light_is_on() and not self.compare_item():
                     self.swap_item()
+                # We expect items to be descending
+                # If so, continue moving them to the left
                 elif self.compare_item() and self.compare_item() >= 0:
                     self.swap_item()
+                # If items aren't descending, the list isn't in order yet
                 else:
                     self.set_light_on()
-                # self.move_right()
-                # self.swap_item()
-                # self.move_left()
 
 
 if __name__ == "__main__":
